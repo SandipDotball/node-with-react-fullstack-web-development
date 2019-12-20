@@ -1,0 +1,23 @@
+{
+  "name": "with-react-fullstack-web-development",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "10.15.1",
+    "npm": "6.13.2"
+  },
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandipDotball/node-with-react-fullstack-web-development.git"
+  },
+  "author": "Sandip Pal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandipDotball/node-with-react-fullstack-web-development/issues"
+  },
+  "homepage": "https://github.com/SandipDotball/node-with-react-fullstack-web-development#readme"
+}
