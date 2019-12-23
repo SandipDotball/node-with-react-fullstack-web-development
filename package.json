@@ -8,7 +8,7 @@
     "npm": "6.13.2"
   },
   "scripts": {
-    "start": "npm start --prefix server"
+    "start": "npm run dev --prefix server"
   },
   "repository": {
     "type": "git",

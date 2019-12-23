@@ -1,18 +1,39 @@
 const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('./config/keys');
 
 const app = express();
 
 // https://console.developers.google.com/
 
-// Client Id: 782961547368-rk6ro3teckd6v5rnpf538m3hf2tbjakh.apps.googleusercontent.com
-// Secret Id: 0PsNcwRq23BxIg5KQiuYP91G
-passport.use(new GoogleStrategy());
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback'
+    },
+    (accessToken, refreshToken, profile, done) => {
+      console.log('Access Token:', accessToken);
+      console.log('Refresh Token:', refreshToken);
+      console.log('Profile:', profile);
+    }
+  )
+);
 
-app.get('/', (req, res) => {
-  res.send({ hi: 'Sandip' });
-});
+app.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
+);
+
+app.get('/auth/google/callback', passport.authenticate('google'));
+
+// app.get('/', (req, res) => {
+//   res.send({ hi: 'Sandip' });
+// });
 
 const PORT = process.env.PORT || 5000;
 
