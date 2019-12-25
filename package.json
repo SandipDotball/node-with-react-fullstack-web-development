@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/SandipDotball/node-with-react-fullstack-web-development/issues"
   },
-  "homepage": "https://github.com/SandipDotball/node-with-react-fullstack-web-development#readme"
+  "homepage": "https://github.com/SandipDotball/node-with-react-fullstack-web-development#readme",
+  "dependencies": {}
 }

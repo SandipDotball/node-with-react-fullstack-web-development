@@ -1,39 +1,33 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+require('./services/passport');
+const authRoutes = require('./routes/authRoutes');
 const keys = require('./config/keys');
 
 const app = express();
 
-// https://console.developers.google.com/
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
-    },
-    (accessToken, refreshToken, profile, done) => {
-      console.log('Access Token:', accessToken);
-      console.log('Refresh Token:', refreshToken);
-      console.log('Profile:', profile);
-    }
-  )
-);
-
-app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email']
+// Use Cookie Session
+app.use(
+  cookieSession({
+    maxAge: 10 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
   })
 );
 
-app.get('/auth/google/callback', passport.authenticate('google'));
+// Use Passport Session
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.get('/', (req, res) => {
-//   res.send({ hi: 'Sandip' });
-// });
+// Initilize Auth Router
+authRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 
