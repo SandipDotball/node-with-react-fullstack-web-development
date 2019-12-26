@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 
-require('./services/passport');
-const authRoutes = require('./routes/authRoutes');
 const keys = require('./config/keys');
+const authRoutes = require('./routes/authRoutes');
+
+require('./services/passport');
 
 const app = express();
 
