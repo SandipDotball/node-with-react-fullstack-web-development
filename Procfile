@@ -1,1 +1,1 @@
-web: ./bin/www npm run dev --prefix server
+web: ./bin/www npm start
