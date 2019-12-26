@@ -8,7 +8,9 @@
     "npm": "6.13.2"
   },
   "scripts": {
-    "start": "npm run dev --prefix server"
+    "server": "npm run dev --prefix server",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/SandipDotball/node-with-react-fullstack-web-development#readme",
   "dependencies": {
+    "concurrently": "^5.0.2",
     "express": "*"
   }
 }
