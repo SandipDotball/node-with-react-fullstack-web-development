@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 
 class Header extends Component {
   constructor(props) {
@@ -31,9 +32,23 @@ class Header extends Component {
           {!loading && (
             <ul id='nav-mobile' className='right hide-on-med-and-down'>
               {user ? (
-                <li>
-                  <span onClick={() => logout()}>Logout</span>
-                </li>
+                [
+                  <li key='payment'>
+                    <Payments />
+                  </li>,
+                  <li key='credit'>
+                    <span className='waves-effect waves-teal btn-flat white-text'>
+                      <strong>Credits: {user.credits}</strong>
+                    </span>
+                  </li>,
+                  <li key='logout'>
+                    <button
+                      className='waves-effect waves-teal btn-flat white-text'
+                      onClick={() => logout()}>
+                      Logout
+                    </button>
+                  </li>
+                ]
               ) : (
                 <li>
                   <a href='/auth/google'>Sign In With Google</a>

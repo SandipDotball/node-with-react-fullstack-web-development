@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
+const billingRoutes = require('./routes/billingRoutes');
 
 require('./services/passport');
 
@@ -14,6 +16,9 @@ mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+
+// Use bodyParser
+app.use(bodyParser.json());
 
 // Use Cookie Session
 app.use(
@@ -29,6 +34,8 @@ app.use(passport.session());
 
 // Initilize Auth Router
 authRoutes(app);
+// Initilize Billing Router
+billingRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 

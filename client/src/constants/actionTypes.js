@@ -3,3 +3,6 @@ export const UNLOAD_USER = 'UNLOAD_USER';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+
+export const SEND_USER_PAYMENT = 'SEND_USER_PAYMENT';
+export const ERROR_SEND_USER_PAYMENT = 'ERROR_SEND_USER_PAYMENT';

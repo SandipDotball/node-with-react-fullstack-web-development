@@ -20,7 +20,7 @@ export const logoutUser = () => async dispatch => {
     const user = await axios.get('/api/logout');
     dispatch({
       type: LOGOUT_USER,
-      payload: undefined
+      payload: user && undefined
     });
   } catch (error) {
     dispatch({

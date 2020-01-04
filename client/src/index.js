@@ -13,6 +13,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+console.log('stripe key:', process.env.REACT_APP_STRIPE_KEY);
+console.log('Enverment', process.env.NODE_ENV);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

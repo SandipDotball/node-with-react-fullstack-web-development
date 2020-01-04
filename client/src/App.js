@@ -6,9 +6,6 @@ import Header from './components/Header';
 import { loadUser } from './actions/authActions';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.loaduser();
   }
