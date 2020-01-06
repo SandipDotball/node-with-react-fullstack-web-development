@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
+const surveyRoutes = require('./routes/surveyRoutes');
 
 require('./services/passport');
 
@@ -36,6 +37,9 @@ app.use(passport.session());
 authRoutes(app);
 // Initilize Billing Router
 billingRoutes(app);
+
+// Initilize Survey Router
+surveyRoutes(app);
 
 // For Production
 if (process.env.NODE_ENV === 'production') {

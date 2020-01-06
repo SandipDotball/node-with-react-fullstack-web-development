@@ -7,6 +7,10 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
+// FOR DEVELOPMENT
+import axios from 'axios';
+window.axios = axios;
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
