@@ -3,7 +3,8 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   SEND_USER_PAYMENT,
-  ERROR_SEND_USER_PAYMENT
+  ERROR_SEND_USER_PAYMENT,
+  SUBMIT_SURVEY
 } from '../constants/actionTypes';
 
 const initilizeState = {
@@ -17,6 +18,7 @@ const authReducer = (state = initilizeState, action) => {
     case LOAD_USER:
       return { user: action.payload || false, loading: false };
     case SEND_USER_PAYMENT:
+    case SUBMIT_SURVEY:
       return { ...state, user: { ...state.user, credits: action.payload } };
     case ERROR_SEND_USER_PAYMENT:
       return { ...state, user: { ...state.user, credits: 0 } };
